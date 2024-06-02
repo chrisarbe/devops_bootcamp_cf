@@ -22,3 +22,7 @@ spec:
               name: django-app-env
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: dj-volume
+              mountPath: /data/dj-app
+          
