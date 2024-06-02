@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dj-app
+  namespace: bootcamp-devops-cf
+  labels:
+    app: dj-app
+spec:
+  selector:
+    matchLabels:
+      app: dj-app
+  template:
+    metadata:
+      labels:
+        app: dj-app
+    spec:
+      containers:
+        - image: chrisarbe/devops_bootcamp_cf:latest
+          name: dj-app-container
+          envFrom:
+          - secretRef:
+              name: django-app-env
+          ports:
+            - containerPort: 8000
